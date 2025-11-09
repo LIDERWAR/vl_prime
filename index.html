@@ -9,7 +9,96 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <h1>Привет, мир</h1>
+    <header class="site-header" role="banner">
+      <div class="site-header__inner">
+        <a
+          class="site-header__logo"
+          href="/"
+          aria-label="VL Prime — перейти на главную"
+          tabindex="0"
+          role="link"
+          onkeydown="handleInteractiveEnter(event)"
+        >
+          <img
+            src="assets/img/logo.png"
+            width="96"
+            height="96"
+            loading="lazy"
+            alt="Логотип VL Prime"
+          />
+        </a>
+        <nav class="site-nav" aria-label="Основная навигация">
+          <ul class="site-nav__list">
+            <li class="site-nav__item">
+              <a
+                class="site-nav__link"
+                href="#new"
+                aria-label="Раздел новые автомобили"
+                tabindex="0"
+                onkeydown="handleInteractiveEnter(event)"
+              >
+                New
+              </a>
+            </li>
+            <li class="site-nav__item">
+              <a
+                class="site-nav__link"
+                href="#promo"
+                aria-label="Раздел акции"
+                tabindex="0"
+                onkeydown="handleInteractiveEnter(event)"
+              >
+                Promo
+              </a>
+            </li>
+            <li class="site-nav__item">
+              <a
+                class="site-nav__link"
+                href="#parts"
+                aria-label="Раздел запчасти"
+                tabindex="0"
+                onkeydown="handleInteractiveEnter(event)"
+              >
+                Parts
+              </a>
+            </li>
+            <li class="site-nav__item">
+              <a
+                class="site-nav__link"
+                href="#center"
+                aria-label="Раздел сервисный центр"
+                tabindex="0"
+                onkeydown="handleInteractiveEnter(event)"
+              >
+                Center
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div class="site-header__actions">
+          <a
+            class="site-header__button site-header__button--primary"
+            href="#book-service"
+            role="button"
+            aria-label="Записаться на сервис"
+            tabindex="0"
+            onkeydown="handleInteractiveEnter(event)"
+          >
+            Book Service
+          </a>
+          <a
+            class="site-header__button site-header__button--secondary"
+            href="#request-call"
+            role="button"
+            aria-label="Заказать звонок"
+            tabindex="0"
+            onkeydown="handleInteractiveEnter(event)"
+          >
+            Request Call
+          </a>
+        </div>
+      </div>
+    </header>
     <script src="js/main.js" defer></script>
   </body>
 </html>
