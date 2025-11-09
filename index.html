@@ -77,16 +77,6 @@
         </nav>
         <div class="site-header__actions">
           <a
-            class="site-header__button site-header__button--primary"
-            href="#book-service"
-            role="button"
-            aria-label="Записаться на сервис"
-            tabindex="0"
-            onkeydown="handleInteractiveEnter(event)"
-          >
-            Book Service
-          </a>
-          <a
             class="site-header__button site-header__button--secondary"
             href="#request-call"
             role="button"
@@ -99,6 +89,226 @@
         </div>
       </div>
     </header>
+    <section class="hero-banner" aria-labelledby="hero-banner-title">
+      <div class="hero-banner__inner">
+        <div class="hero-banner__content">
+          <h1 class="hero-banner__title" id="hero-banner-title">
+            Специализированный сервис Volvo
+          </h1>
+          <p class="hero-banner__description">
+            Полный цикл обслуживания, сертифицированные специалисты и оригинальные запчасти для вашего Volvo — от регламентного ТО до сложных ремонтов.
+          </p>
+          <div class="hero-banner__actions">
+            <a
+              class="hero-banner__button hero-banner__button--primary"
+              href="#book-service"
+              role="button"
+              aria-label="Записаться на сервисное обслуживание Volvo"
+              tabindex="0"
+              onkeydown="handleInteractiveEnter(event)"
+            >
+              Book Service
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="services" id="services">
+      <div class="services__inner">
+        <h2 class="services__title">Services</h2>
+        <span class="services__accent" aria-hidden="true"></span>
+        <div class="services__tabs" role="tablist" aria-label="Услуги VL Prime">
+          <button
+            class="services__tab services__tab--active"
+            type="button"
+            role="tab"
+            aria-selected="true"
+            tabindex="0"
+            data-services-tab="maintenance"
+          >
+            Maintenance
+          </button>
+          <button
+            class="services__tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            tabindex="-1"
+            data-services-tab="transmission-repair"
+          >
+            Transmission repair
+          </button>
+          <button
+            class="services__tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            tabindex="-1"
+            data-services-tab="diagnostics"
+          >
+            Diagnostics
+          </button>
+          <button
+            class="services__tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            tabindex="-1"
+            data-services-tab="advanced-diagnostics"
+          >
+            Diagnostics
+          </button>
+          <button
+            class="services__tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            tabindex="-1"
+            data-services-tab="emergency-repair"
+          >
+            Emergency repair
+          </button>
+        </div>
+      </div>
+    </section>
+    <section class="service-offers" id="service-offers">
+      <div class="service-offers__inner">
+        <h2 class="service-offers__title visually-hidden">Service offers</h2>
+        <ul class="service-offers__list">
+          <li class="service-card service-card--highlight">
+            <article class="service-card__content">
+              <p class="service-card__code">#181916</p>
+              <h3 class="service-card__heading">Volvo Servicions</h3>
+              <p class="service-card__subtitle">Cost/starting price</p>
+              <p class="service-card__description">
+                Costтайсяцддомой/кілоти Light остелсцддопомогит.юл.
+              </p>
+              <p class="service-card__accent">Cost/starting price</p>
+            </article>
+          </li>
+          <li class="service-card service-card--featured">
+            <article class="service-card__content">
+              <img
+                class="service-card__image"
+                src="https://picsum.photos/id/123/360/220.webp"
+                srcset="
+                  https://picsum.photos/id/123/360/220.webp 360w,
+                  https://picsum.photos/id/123/720/440.webp 720w
+                "
+                sizes="(min-width: 768px) 360px, 100vw"
+                width="360"
+                height="220"
+                loading="lazy"
+                alt="Volvo в сервисном центре"
+              />
+              <div class="service-card__body">
+                <h3 class="service-card__heading">Cost/starting price</h3>
+                <p class="service-card__description">
+                  Digit ametesditationminora oceanic. Light rivastant conq rapilot.
+                </p>
+                <p class="service-card__accent">Cost/starting price</p>
+              </div>
+            </article>
+          </li>
+          <li class="service-card">
+            <article class="service-card__content">
+              <h3 class="service-card__heading">Estimated completion time</h3>
+              <p class="service-card__description">
+                Light oastedicationmmnprlper percthtimentor time s doivit.
+              </p>
+              <p class="service-card__meta">Срок исполнения: до 1500 h.</p>
+              <a
+                class="service-card__cta"
+                href="#book-service"
+                role="button"
+                aria-label="Записаться на услугу с примерным временем исполнения"
+              >
+                Book Now
+              </a>
+            </article>
+          </li>
+          <li class="service-card">
+            <article class="service-card__content">
+              <img
+                class="service-card__image"
+                src="https://picsum.photos/id/123/360/220.webp"
+                srcset="
+                  https://picsum.photos/id/123/360/220.webp 360w,
+                  https://picsum.photos/id/123/720/440.webp 720w
+                "
+                sizes="(min-width: 768px) 360px, 100vw"
+                width="360"
+                height="220"
+                loading="lazy"
+                alt="Volvo в сервисном центре"
+              />
+              <div class="service-card__body">
+                <h3 class="service-card__heading">Estimated completion time</h3>
+                <p class="service-card__description">
+                  Light oastedicationmmnprlper percthtimentor time s doivit.
+                </p>
+                <p class="service-card__meta">~ 90 0M</p>
+              </div>
+            </article>
+          </li>
+          <li class="service-card">
+            <article class="service-card__content">
+              <img
+                class="service-card__image"
+                src="https://picsum.photos/id/123/360/220.webp"
+                srcset="
+                  https://picsum.photos/id/123/360/220.webp 360w,
+                  https://picsum.photos/id/123/720/440.webp 720w
+                "
+                sizes="(min-width: 768px) 360px, 100vw"
+                width="360"
+                height="220"
+                loading="lazy"
+                alt="Volvo в сервисном центре"
+              />
+              <div class="service-card__body">
+                <h3 class="service-card__heading">Estimated completion time</h3>
+                <p class="service-card__description">
+                  Light oastedicationmmnprlper percthtimentor time s doivit.
+                </p>
+                <a
+                  class="service-card__cta"
+                  href="#book-service"
+                  role="button"
+                  aria-label="Записаться на сервис для оценки времени выполнения"
+                >
+                  Book Now
+                </a>
+              </div>
+            </article>
+          </li>
+          <li class="service-card">
+            <article class="service-card__content">
+              <img
+                class="service-card__image"
+                src="https://picsum.photos/id/123/360/220.webp"
+                srcset="
+                  https://picsum.photos/id/123/360/220.webp 360w,
+                  https://picsum.photos/id/123/720/440.webp 720w
+                "
+                sizes="(min-width: 768px) 360px, 100vw"
+                width="360"
+                height="220"
+                loading="lazy"
+                alt="Volvo в сервисном центре"
+              />
+              <div class="service-card__body">
+                <h3 class="service-card__heading">Estimated completion time</h3>
+                <p class="service-card__description">
+                  Digit oastedicationmmnprlper percthtimentor time s doivit.
+                </p>
+                <p class="service-card__meta">Срок исполнения: до 1300 h.</p>
+              </div>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </section>
     <script src="js/main.js" defer></script>
   </body>
 </html>
