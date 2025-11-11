@@ -175,53 +175,60 @@
       <div class="service-offers__inner">
         <h2 class="service-offers__title visually-hidden">Service offers</h2>
         <ul class="service-offers__list">
-          <li class="service-card service-card--highlight">
+          <li class="service-card service-card--primary">
             <article class="service-card__content">
-              <p class="service-card__code">#181916</p>
-              <h3 class="service-card__heading">Volvo Servicions</h3>
+              <div class="service-card__badge" aria-hidden="true"></div>
+              <div class="service-card__header">
+                <p class="service-card__code">#181916</p>
+                <button
+                  class="service-card__menu"
+                  type="button"
+                  aria-label="Открыть дополнительные действия по предложению Volvo Servicions"
+                >
+                  <span class="service-card__menu-dot" aria-hidden="true"></span>
+                </button>
+              </div>
+              <h3 class="service-card__title">Volvvo Servicions</h3>
               <p class="service-card__subtitle">Cost/starting price</p>
-              <p class="service-card__description">
-                Costтайсяцддомой/кілоти Light остелсцддопомогит.юл.
+              <p class="service-card__text">
+                Cost нtyasci dommoniojtu. Costtai ддомой, light остелсцддопомogит.
               </p>
-              <p class="service-card__accent">Cost/starting price</p>
+              <span class="service-card__price">Cost/starting price</span>
             </article>
           </li>
           <li class="service-card service-card--featured">
             <article class="service-card__content">
               <img
                 class="service-card__image"
-                src="https://picsum.photos/id/123/360/220.webp"
-                srcset="
-                  https://picsum.photos/id/123/360/220.webp 360w,
-                  https://picsum.photos/id/123/720/440.webp 720w
-                "
-                sizes="(min-width: 768px) 360px, 100vw"
+                src="resorses/1.webp"
                 width="360"
                 height="220"
                 loading="lazy"
-                alt="Volvo в сервисном центре"
+                alt="Белый Volvo XC90 в ремонтной зоне"
               />
               <div class="service-card__body">
-                <h3 class="service-card__heading">Cost/starting price</h3>
-                <p class="service-card__description">
+                <p class="service-card__label">Cost/starting price</p>
+                <p class="service-card__text service-card__text--short">
                   Digit ametesditationminora oceanic. Light rivastant conq rapilot.
                 </p>
-                <p class="service-card__accent">Cost/starting price</p>
+                <span class="service-card__price">Cost/starting price</span>
               </div>
             </article>
           </li>
-          <li class="service-card">
+          <li class="service-card service-card--cta">
             <article class="service-card__content">
-              <h3 class="service-card__heading">Estimated completion time</h3>
-              <p class="service-card__description">
+              <p class="service-card__label">Estimated completion time</p>
+              <p class="service-card__text">
                 Light oastedicationmmnprlper percthtimentor time s doivit.
               </p>
-              <p class="service-card__meta">Срок исполнения: до 1500 h.</p>
+              <p class="service-card__meta">Completion time • 1 181 0H</p>
               <a
-                class="service-card__cta"
+                class="service-card__button"
                 href="#book-service"
                 role="button"
-                aria-label="Записаться на услугу с примерным временем исполнения"
+                aria-label="Записаться на услугу с обозначенным временем выполнения"
+                tabindex="0"
+                onkeydown="handleInteractiveEnter(event)"
               >
                 Book Now
               </a>
@@ -231,20 +238,15 @@
             <article class="service-card__content">
               <img
                 class="service-card__image"
-                src="https://picsum.photos/id/123/360/220.webp"
-                srcset="
-                  https://picsum.photos/id/123/360/220.webp 360w,
-                  https://picsum.photos/id/123/720/440.webp 720w
-                "
-                sizes="(min-width: 768px) 360px, 100vw"
+                src="resorses/2.webp"
                 width="360"
                 height="220"
                 loading="lazy"
-                alt="Volvo в сервисном центре"
+                alt="Серый Volvo XC60 в техническом центре"
               />
               <div class="service-card__body">
-                <h3 class="service-card__heading">Estimated completion time</h3>
-                <p class="service-card__description">
+                <p class="service-card__label">Estimated completion time</p>
+                <p class="service-card__text service-card__text--short">
                   Light oastedicationmmnprlper percthtimentor time s doivit.
                 </p>
                 <p class="service-card__meta">~ 90 0M</p>
@@ -255,27 +257,24 @@
             <article class="service-card__content">
               <img
                 class="service-card__image"
-                src="https://picsum.photos/id/123/360/220.webp"
-                srcset="
-                  https://picsum.photos/id/123/360/220.webp 360w,
-                  https://picsum.photos/id/123/720/440.webp 720w
-                "
-                sizes="(min-width: 768px) 360px, 100vw"
+                src="resorses/3.webp"
                 width="360"
                 height="220"
                 loading="lazy"
-                alt="Volvo в сервисном центре"
+                alt="Серебристый Volvo XC90 в сервисном боксе"
               />
               <div class="service-card__body">
-                <h3 class="service-card__heading">Estimated completion time</h3>
-                <p class="service-card__description">
+                <p class="service-card__label">Estimated completion time</p>
+                <p class="service-card__text service-card__text--short">
                   Light oastedicationmmnprlper percthtimentor time s doivit.
                 </p>
                 <a
-                  class="service-card__cta"
+                  class="service-card__button"
                   href="#book-service"
                   role="button"
                   aria-label="Записаться на сервис для оценки времени выполнения"
+                  tabindex="0"
+                  onkeydown="handleInteractiveEnter(event)"
                 >
                   Book Now
                 </a>
@@ -286,23 +285,18 @@
             <article class="service-card__content">
               <img
                 class="service-card__image"
-                src="https://picsum.photos/id/123/360/220.webp"
-                srcset="
-                  https://picsum.photos/id/123/360/220.webp 360w,
-                  https://picsum.photos/id/123/720/440.webp 720w
-                "
-                sizes="(min-width: 768px) 360px, 100vw"
+                src="resorses/1.webp"
                 width="360"
                 height="220"
                 loading="lazy"
-                alt="Volvo в сервисном центре"
+                alt="Белый Volvo XC90 в техническом боксе"
               />
               <div class="service-card__body">
-                <h3 class="service-card__heading">Estimated completion time</h3>
-                <p class="service-card__description">
+                <p class="service-card__label">Estimated completion time</p>
+                <p class="service-card__text service-card__text--short">
                   Digit oastedicationmmnprlper percthtimentor time s doivit.
                 </p>
-                <p class="service-card__meta">Срок исполнения: до 1300 h.</p>
+                <p class="service-card__meta">Completion time • 1 300 h</p>
               </div>
             </article>
           </li>
