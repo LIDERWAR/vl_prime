@@ -192,7 +192,19 @@ const calcRecompute = (root) => {
     const base = Number(checkbox.dataset.price || 0);
     const qtyInput = item.querySelector('[data-multiplier]');
     const qty = qtyInput ? Math.max(1, Number(qtyInput.value || 1)) : 1;
-    total += base * qty;
+    let itemTotal = base * qty;
+
+    // Доплата за масло по бренду (если есть селектор бренда)
+    const oilBrandSelect = item.querySelector('[data-oil-brand]');
+    if (oilBrandSelect && oilBrandSelect.tagName === 'SELECT') {
+      const selectedOption = /** @type {HTMLSelectElement} */ (oilBrandSelect).selectedOptions?.[0];
+      const perLiter = Number(selectedOption?.dataset.price || 0);
+      if (!Number.isNaN(perLiter) && perLiter > 0) {
+        itemTotal += perLiter * qty;
+      }
+    }
+
+    total += itemTotal;
     count += 1;
   });
 

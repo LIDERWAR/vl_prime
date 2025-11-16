@@ -288,6 +288,22 @@
                     <input class="price-item__qty" type="number" inputmode="numeric" min="1" max="12" step="1" value="5" data-multiplier />
                     <span class="price-item__unit">л</span>
                   </label>
+                  <div class="price-item__brand">
+                    <label class="price-item__brand-label" for="oil-brand">Бренд масла</label>
+                    <select
+                      class="price-item__select"
+                      id="oil-brand"
+                      aria-label="Выбор бренда масла"
+                      tabindex="0"
+                      data-oil-brand
+                    >
+                      <option value="volvo" data-price="900">Volvo OEM — 900 ₽/л</option>
+                      <option value="mobil1" data-price="800">Mobil 1 — 800 ₽/л</option>
+                      <option value="castrol" data-price="750">Castrol — 750 ₽/л</option>
+                      <option value="liqui-moly" data-price="950">Liqui Moly — 950 ₽/л</option>
+                      <option value="shell" data-price="700">Shell — 700 ₽/л</option>
+                    </select>
+                  </div>
                   <span class="price-item__note">Цена за работу, масло отдельно</span>
                 </div>
               </li>
