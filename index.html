@@ -27,7 +27,7 @@
             alt="Логотип VL Prime"
           />
         </a>
-        <nav class="site-nav" aria-label="Основная навигация">
+        <nav class="site-nav" id="mobile-nav" aria-label="Основная навигация">
           <ul class="site-nav__list">
             <li class="site-nav__item">
               <a
@@ -76,15 +76,30 @@
           </ul>
         </nav>
         <div class="site-header__actions">
-          <a
-            class="site-header__button site-header__button--secondary"
-            href="#request-call"
-            role="button"
-            aria-label="Заказать звонок"
+          <button
+            class="burger-button"
+            type="button"
+            aria-label="Открыть меню"
+            aria-controls="mobile-nav"
+            aria-expanded="false"
             tabindex="0"
             onkeydown="handleInteractiveEnter(event)"
           >
-            Request Call
+            <span class="burger-button__bar" aria-hidden="true"></span>
+            <span class="burger-button__bar" aria-hidden="true"></span>
+            <span class="burger-button__bar" aria-hidden="true"></span>
+          </button>
+          <a
+            class="phone-button"
+            href="tel:+74951234567"
+            role="button"
+            aria-label="Позвонить в VL Prime"
+            tabindex="0"
+            onkeydown="handleInteractiveEnter(event)"
+          >
+            <svg class="phone-button__icon" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M6.62 10.79a15.093 15.093 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V21a1 1 0 01-1 1C10.85 22 2 13.15 2 2a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.2 2.2z"/>
+            </svg>
           </a>
         </div>
       </div>
@@ -111,6 +126,61 @@
             </a>
           </div>
         </div>
+      </div>
+    </section>
+    <section class="booking" id="book-service" aria-labelledby="booking-title">
+      <div class="booking__inner">
+        <header class="booking__header">
+          <h2 class="booking__title" id="booking-title">Запись на ТО</h2>
+          <p class="booking__subtitle">Выберите удобные дату и время — покажем только свободные слоты</p>
+        </header>
+        <div class="booking__layout">
+          <div class="booking-calendar" aria-live="polite">
+            <div class="booking-calendar__top">
+              <button class="booking-calendar__nav booking-calendar__nav--prev" type="button" aria-label="Предыдущий месяц">
+                ‹
+              </button>
+              <div class="booking-calendar__label">
+                <span id="booking-month-label">Месяц Год</span>
+              </div>
+              <button class="booking-calendar__nav booking-calendar__nav--next" type="button" aria-label="Следующий месяц">
+                ›
+              </button>
+            </div>
+            <div class="booking-calendar__weekdays" aria-hidden="true">
+              <span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Вс</span>
+            </div>
+            <div class="booking-calendar__grid" id="booking-grid" role="grid" aria-label="Календарь для выбора даты"></div>
+          </div>
+          <div class="booking-slots">
+            <h3 class="booking-slots__title">Доступное время</h3>
+            <div class="booking-slots__list" id="booking-slots" role="listbox" aria-label="Свободные временные слоты"></div>
+          </div>
+        </div>
+        <form class="booking__form" id="booking-form" novalidate>
+          <div class="booking__row">
+            <label class="booking__field">
+              <span class="booking__label">Выбранная дата</span>
+              <input class="booking__input" id="booking-date-input" type="text" readonly aria-readonly="true" />
+            </label>
+            <label class="booking__field">
+              <span class="booking__label">Время</span>
+              <input class="booking__input" id="booking-time-input" type="text" readonly aria-readonly="true" />
+            </label>
+          </div>
+          <div class="booking__row">
+            <label class="booking__field">
+              <span class="booking__label">Имя</span>
+              <input class="booking__input" id="booking-name" type="text" placeholder="Иван" required />
+            </label>
+            <label class="booking__field">
+              <span class="booking__label">Телефон</span>
+              <input class="booking__input" id="booking-phone" type="tel" inputmode="tel" placeholder="+7 (___) ___-__-__" required />
+            </label>
+          </div>
+          <button class="booking__submit" type="submit" aria-label="Отправить заявку на ТО">Записаться</button>
+          <p class="booking__notice" id="booking-notice" role="status" aria-live="polite"></p>
+        </form>
       </div>
     </section>
     <section class="services" id="services">
@@ -169,6 +239,127 @@
             Emergency repair
           </button>
         </div>
+      </div>
+    </section>
+    <section class="price-calculator" id="price-calculator" aria-labelledby="price-calculator-title">
+      <div class="price-calculator__inner">
+        <header class="price-calculator__header">
+          <h2 class="price-calculator__title" id="price-calculator-title">Калькулятор стоимости</h2>
+          <p class="price-calculator__subtitle">Выберите услуги — итог посчитается автоматически</p>
+        </header>
+        <form class="price-calculator__form" id="calc-form" novalidate>
+          <fieldset class="price-calculator__group" aria-labelledby="calc-diagnostics">
+            <legend class="price-calculator__legend" id="calc-diagnostics">Диагностика</legend>
+            <ul class="price-calculator__list">
+              <li class="price-item">
+                <label class="price-item__row">
+                  <input class="price-item__check" type="checkbox" data-title="Комплексная диагностика" data-price="3500" />
+                  <span class="price-item__title">Комплексная диагностика</span>
+                  <span class="price-item__price" data-currency="RUB" data-value="3500">3 500 ₽</span>
+                </label>
+              </li>
+              <li class="price-item">
+                <label class="price-item__row">
+                  <input class="price-item__check" type="checkbox" data-title="Диагностика подвески" data-price="1800" />
+                  <span class="price-item__title">Диагностика подвески</span>
+                  <span class="price-item__price" data-currency="RUB" data-value="1800">1 800 ₽</span>
+                </label>
+              </li>
+              <li class="price-item">
+                <label class="price-item__row">
+                  <input class="price-item__check" type="checkbox" data-title="Компьютерная диагностика" data-price="2200" />
+                  <span class="price-item__title">Компьютерная диагностика</span>
+                  <span class="price-item__price" data-currency="RUB" data-value="2200">2 200 ₽</span>
+                </label>
+              </li>
+            </ul>
+          </fieldset>
+          <fieldset class="price-calculator__group" aria-labelledby="calc-maintenance">
+            <legend class="price-calculator__legend" id="calc-maintenance">ТО и обслуживание</legend>
+            <ul class="price-calculator__list">
+              <li class="price-item">
+                <label class="price-item__row">
+                  <input class="price-item__check" type="checkbox" data-title="Замена моторного масла" data-price="1400" />
+                  <span class="price-item__title">Замена моторного масла</span>
+                  <span class="price-item__price" data-currency="RUB" data-value="1400">1 400 ₽</span>
+                </label>
+                <div class="price-item__controls">
+                  <label class="price-item__qty-label" aria-label="Количество литров">
+                    <input class="price-item__qty" type="number" inputmode="numeric" min="1" max="12" step="1" value="5" data-multiplier />
+                    <span class="price-item__unit">л</span>
+                  </label>
+                  <span class="price-item__note">Цена за работу, масло отдельно</span>
+                </div>
+              </li>
+              <li class="price-item">
+                <label class="price-item__row">
+                  <input class="price-item__check" type="checkbox" data-title="Замена салонного фильтра" data-price="900" />
+                  <span class="price-item__title">Замена салонного фильтра</span>
+                  <span class="price-item__price" data-currency="RUB" data-value="900">900 ₽</span>
+                </label>
+              </li>
+              <li class="price-item">
+                <label class="price-item__row">
+                  <input class="price-item__check" type="checkbox" data-title="Промывка инжектора" data-price="2500" />
+                  <span class="price-item__title">Промывка инжектора</span>
+                  <span class="price-item__price" data-currency="RUB" data-value="2500">2 500 ₽</span>
+                </label>
+              </li>
+            </ul>
+          </fieldset>
+          <fieldset class="price-calculator__group" aria-labelledby="calc-replacement">
+            <legend class="price-calculator__legend" id="calc-replacement">Замены и ремонт</legend>
+            <ul class="price-calculator__list">
+              <li class="price-item">
+                <label class="price-item__row">
+                  <input class="price-item__check" type="checkbox" data-title="Замена тормозных колодок (ось)" data-price="2000" />
+                  <span class="price-item__title">Замена тормозных колодок (ось)</span>
+                  <span class="price-item__price" data-currency="RUB" data-value="2000">2 000 ₽</span>
+                </label>
+                <div class="price-item__controls">
+                  <label class="price-item__qty-label" aria-label="Количество осей">
+                    <input class="price-item__qty" type="number" inputmode="numeric" min="1" max="2" step="1" value="1" data-multiplier />
+                    <span class="price-item__unit">ось</span>
+                  </label>
+                </div>
+              </li>
+              <li class="price-item">
+                <label class="price-item__row">
+                  <input class="price-item__check" type="checkbox" data-title="Замена свечей зажигания (комплект)" data-price="1800" />
+                  <span class="price-item__title">Замена свечей зажигания (комплект)</span>
+                  <span class="price-item__price" data-currency="RUB" data-value="1800">1 800 ₽</span>
+                </label>
+              </li>
+              <li class="price-item">
+                <label class="price-item__row">
+                  <input class="price-item__check" type="checkbox" data-title="Замена ремня ГРМ" data-price="8500" />
+                  <span class="price-item__title">Замена ремня ГРМ</span>
+                  <span class="price-item__price" data-currency="RUB" data-value="8500">8 500 ₽</span>
+                </label>
+              </li>
+            </ul>
+          </fieldset>
+          <aside class="price-summary" aria-live="polite">
+            <div class="price-summary__row">
+              <span class="price-summary__label">Выбрано:</span>
+              <span class="price-summary__value" id="calc-count">0</span>
+            </div>
+            <div class="price-summary__row price-summary__row--total">
+              <span class="price-summary__label">Итого:</span>
+              <span class="price-summary__total" id="calc-total" data-currency="RUB">0 ₽</span>
+            </div>
+            <a
+              class="price-summary__cta"
+              href="#book-service"
+              role="button"
+              aria-label="Отправить заявку на выбранные услуги"
+              tabindex="0"
+              onkeydown="handleInteractiveEnter(event)"
+            >
+              Оставить заявку
+            </a>
+          </aside>
+        </form>
       </div>
     </section>
     <section class="service-offers" id="service-offers">
