@@ -178,11 +178,25 @@ const calcFormatCurrency = (value, currency = 'RUB') => {
   }
 };
 
+const calcFormatTime = (minutes) => {
+  if (!minutes || minutes === 0) return '0 мин';
+  const hours = Math.floor(minutes / 60);
+  const mins = minutes % 60;
+  if (hours > 0 && mins > 0) {
+    return `${hours} ч ${mins} мин`;
+  }
+  if (hours > 0) {
+    return `${hours} ч`;
+  }
+  return `${mins} мин`;
+};
+
 const calcRecompute = (root) => {
   if (!root) return;
   const items = Array.from(root.querySelectorAll('.price-item'));
   let total = 0;
   let count = 0;
+  let totalTime = 0;
 
   items.forEach((item) => {
     const checkbox = item.querySelector('.price-item__check');
@@ -190,6 +204,7 @@ const calcRecompute = (root) => {
       return;
     }
     const base = Number(checkbox.dataset.price || 0);
+    const timeMinutes = Number(checkbox.dataset.time || 0);
     const qtyInput = item.querySelector('[data-multiplier]');
     const qty = qtyInput ? Math.max(1, Number(qtyInput.value || 1)) : 1;
     let itemTotal = base * qty;
@@ -205,14 +220,157 @@ const calcRecompute = (root) => {
     }
 
     total += itemTotal;
+    totalTime += timeMinutes * qty;
     count += 1;
   });
 
   const totalNode = root.querySelector('#calc-total');
   const countNode = root.querySelector('#calc-count');
+  const timeNode = root.querySelector('#calc-time');
   const currency = totalNode?.dataset.currency || 'RUB';
   if (totalNode) totalNode.textContent = calcFormatCurrency(total, currency);
   if (countNode) countNode.textContent = String(count);
+  if (timeNode) timeNode.textContent = calcFormatTime(totalTime);
+};
+
+const calcGetSelectedServices = (root) => {
+  if (!root) return [];
+  const items = Array.from(root.querySelectorAll('.price-item'));
+  const services = [];
+
+  items.forEach((item) => {
+    const checkbox = item.querySelector('.price-item__check');
+    if (!checkbox || !checkbox.checked) {
+      return;
+    }
+
+    const title = checkbox.dataset.title || '';
+    const basePrice = Number(checkbox.dataset.price || 0);
+    const timeMinutes = Number(checkbox.dataset.time || 0);
+    const qtyInput = item.querySelector('[data-multiplier]');
+    const qty = qtyInput ? Math.max(1, Number(qtyInput.value || 1)) : 1;
+    let itemTotal = basePrice * qty;
+    let details = '';
+
+    // Доплата за масло по бренду
+    const oilBrandSelect = item.querySelector('[data-oil-brand]');
+    if (oilBrandSelect && oilBrandSelect.tagName === 'SELECT') {
+      const selectedOption = /** @type {HTMLSelectElement} */ (oilBrandSelect).selectedOptions?.[0];
+      const brandText = selectedOption?.textContent || '';
+      const brandName = brandText.split('—')[0]?.trim() || brandText.split('-')[0]?.trim() || '';
+      const perLiter = Number(selectedOption?.dataset.price || 0);
+      if (!Number.isNaN(perLiter) && perLiter > 0) {
+        itemTotal += perLiter * qty;
+        details = brandName ? `${brandName} (${qty}л)` : `${qty}л`;
+      } else if (qty > 1) {
+        details = `${qty} шт`;
+      }
+    } else if (qty > 1) {
+      const unit = item.querySelector('.price-item__unit')?.textContent?.trim() || 'шт';
+      details = `${qty} ${unit}`;
+    }
+
+    services.push({
+      title,
+      quantity: qty,
+      details,
+      price: itemTotal,
+      basePrice,
+      timeMinutes: timeMinutes * qty,
+    });
+  });
+
+  return services;
+};
+
+const calcBuildWhatsAppMessage = (services, bookingData = {}) => {
+  const lines = ['🚗 *Заявка на услуги VL Prime*', ''];
+  
+  if (services.length > 0) {
+    lines.push('*Выбранные услуги:*');
+    let total = 0;
+    let totalTime = 0;
+    services.forEach((service) => {
+      const qtyText = service.details ? ` (${service.details})` : service.quantity > 1 ? ` x${service.quantity}` : '';
+      const timeText = service.timeMinutes > 0 ? ` — ${calcFormatTime(service.timeMinutes)}` : '';
+      lines.push(`• ${service.title}${qtyText}${timeText} — ${calcFormatCurrency(service.price)}`);
+      total += service.price;
+      totalTime += service.timeMinutes || 0;
+    });
+    lines.push('');
+    lines.push(`*Итого: ${calcFormatCurrency(total)}*`);
+    if (totalTime > 0) {
+      lines.push(`*Примерное время выполнения: ${calcFormatTime(totalTime)}*`);
+    }
+    lines.push('');
+  }
+
+  const { date, time } = bookingData;
+  if (date || time) {
+    lines.push('*Запись на обслуживание:*');
+    if (date) lines.push(`Дата: ${date}`);
+    if (time) lines.push(`Время: ${time}`);
+    lines.push('');
+  }
+
+  lines.push('Готов записаться на обслуживание!');
+  return lines.join('\n');
+};
+
+const handleCalcWhatsAppClick = (event) => {
+  if (!event) return;
+
+  const form = document.querySelector('#calc-form');
+  if (!form) return;
+
+  const services = calcGetSelectedServices(form);
+  const notice = document.getElementById('calc-notice');
+  
+  if (services.length === 0) {
+    if (notice) {
+      notice.textContent = 'Выберите хотя бы одну услугу';
+      notice.style.color = 'rgba(255, 120, 30, 0.9)';
+      setTimeout(() => {
+        notice.textContent = '';
+      }, 3000);
+    }
+    return;
+  }
+
+  // Получаем данные из формы бронирования (дата и время)
+  const bookingDate = document.getElementById('booking-date-input')?.value?.trim() || '';
+  const bookingTime = document.getElementById('booking-time-input')?.value?.trim() || '';
+
+  const bookingData = {
+    date: bookingDate,
+    time: bookingTime,
+  };
+
+  const message = calcBuildWhatsAppMessage(services, bookingData);
+  
+  // Получаем номер из tel: ссылки в header или используем дефолтный
+  const phoneLink = document.querySelector('.phone-button[href^="tel:"]');
+  let phoneNumber = '74951234567';
+  if (phoneLink) {
+    const telHref = phoneLink.getAttribute('href') || '';
+    const match = telHref.match(/tel:\+?(\d+)/);
+    if (match && match[1]) {
+      phoneNumber = match[1];
+    }
+  }
+  
+  const encodedMessage = encodeURIComponent(message);
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+  window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+  
+  if (notice) {
+    notice.textContent = 'Заявка отправлена в WhatsApp!';
+    notice.style.color = 'rgba(138, 255, 138, 0.9)';
+    setTimeout(() => {
+      notice.textContent = '';
+    }, 3000);
+  }
 };
 
 const initPriceCalculator = () => {
@@ -222,7 +380,7 @@ const initPriceCalculator = () => {
   const onInput = (e) => {
     const target = e.target;
     if (!(target instanceof HTMLElement)) return;
-    if (target.matches('.price-item__check') || target.matches('[data-multiplier]')) {
+    if (target.matches('.price-item__check') || target.matches('[data-multiplier]') || target.matches('[data-oil-brand]')) {
       calcRecompute(form);
     }
   };
@@ -230,8 +388,23 @@ const initPriceCalculator = () => {
   form.addEventListener('change', onInput);
   form.addEventListener('input', onInput);
 
+  // WhatsApp CTA handler
+  const whatsappCta = document.getElementById('calc-whatsapp-cta');
+  if (whatsappCta) {
+    whatsappCta.addEventListener('click', handleCalcWhatsAppClick);
+    whatsappCta.addEventListener('keydown', (e) => {
+      if (ACTIVATION_KEYS.includes(e.key)) {
+        e.preventDefault();
+        handleCalcWhatsAppClick(e);
+      }
+    });
+  }
+
   // initial compute
   calcRecompute(form);
+  
+  // Initialize booking calendar within calculator
+  initBooking();
 };
 
 document.addEventListener('DOMContentLoaded', initPriceCalculator);
@@ -310,8 +483,7 @@ const initBooking = () => {
   const slotsRoot = document.getElementById('booking-slots');
   const dateInput = document.getElementById('booking-date-input');
   const timeInput = document.getElementById('booking-time-input');
-  const form = document.getElementById('booking-form');
-  if (!monthLabel || !grid || !prev || !next || !slotsRoot || !dateInput || !timeInput || !form) {
+  if (!monthLabel || !grid || !prev || !next || !slotsRoot || !dateInput || !timeInput) {
     return;
   }
 
@@ -415,26 +587,5 @@ const initBooking = () => {
     renderMonth();
   });
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = /** @type {HTMLInputElement} */ (document.getElementById('booking-name')).value.trim();
-    const phone = /** @type {HTMLInputElement} */ (document.getElementById('booking-phone')).value.trim();
-    const notice = document.getElementById('booking-notice');
-    if (!selectedDate || !selectedTime || !name || !phone) {
-      if (notice) notice.textContent = 'Заполните имя, телефон и выберите дату/время.';
-      return;
-    }
-    // Бронируем слот (демо: в памяти)
-    const key = toKey(selectedDate);
-    BOOKING_CONFIG.busy[key] = [...new Set([...(BOOKING_CONFIG.busy[key] || []), selectedTime])];
-    if (notice) {
-      const dateStr = selectedDate.toLocaleDateString('ru-RU', { day: '2-digit', month: 'long', year: 'numeric' });
-      notice.textContent = `Заявка отправлена: ${dateStr}, ${selectedTime}. Мы скоро свяжемся с вами.`;
-    }
-    renderSlots();
-  });
-
   renderMonth();
 };
-
-document.addEventListener('DOMContentLoaded', initBooking);

@@ -4,183 +4,261 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vlprime</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@600&family=Roboto:wght@300;400;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/uh-body-normal-content.css" />
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <header class="site-header" role="banner">
-      <div class="site-header__inner">
-        <a
-          class="site-header__logo"
-          href="/"
-          aria-label="VL Prime — перейти на главную"
-          tabindex="0"
-          role="link"
-          onkeydown="handleInteractiveEnter(event)"
-        >
-          <img
-            src="assets/img/logo.png"
-            width="96"
-            height="96"
-            loading="lazy"
-            alt="Логотип VL Prime"
-          />
-        </a>
-        <nav class="site-nav" id="mobile-nav" aria-label="Основная навигация">
-          <ul class="site-nav__list">
-            <li class="site-nav__item">
-              <a
-                class="site-nav__link"
-                href="#new"
-                aria-label="Раздел новые автомобили"
-                tabindex="0"
-                onkeydown="handleInteractiveEnter(event)"
-              >
-                New
-              </a>
-            </li>
-            <li class="site-nav__item">
-              <a
-                class="site-nav__link"
-                href="#promo"
-                aria-label="Раздел акции"
-                tabindex="0"
-                onkeydown="handleInteractiveEnter(event)"
-              >
-                Promo
-              </a>
-            </li>
-            <li class="site-nav__item">
-              <a
-                class="site-nav__link"
-                href="#parts"
-                aria-label="Раздел запчасти"
-                tabindex="0"
-                onkeydown="handleInteractiveEnter(event)"
-              >
-                Parts
-              </a>
-            </li>
-            <li class="site-nav__item">
-              <a
-                class="site-nav__link"
-                href="#center"
-                aria-label="Раздел сервисный центр"
-                tabindex="0"
-                onkeydown="handleInteractiveEnter(event)"
-              >
-                Center
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <div class="site-header__actions">
-          <button
-            class="burger-button"
-            type="button"
-            aria-label="Открыть меню"
-            aria-controls="mobile-nav"
-            aria-expanded="false"
-            tabindex="0"
-            onkeydown="handleInteractiveEnter(event)"
-          >
-            <span class="burger-button__bar" aria-hidden="true"></span>
-            <span class="burger-button__bar" aria-hidden="true"></span>
-            <span class="burger-button__bar" aria-hidden="true"></span>
-          </button>
-          <a
-            class="phone-button"
-            href="tel:+74951234567"
-            role="button"
-            aria-label="Позвонить в VL Prime"
-            tabindex="0"
-            onkeydown="handleInteractiveEnter(event)"
-          >
-            <svg class="phone-button__icon" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="currentColor" d="M6.62 10.79a15.093 15.093 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V21a1 1 0 01-1 1C10.85 22 2 13.15 2 2a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.2 2.2z"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </header>
     <section class="hero-banner" aria-labelledby="hero-banner-title">
-      <div class="hero-banner__inner">
-        <div class="hero-banner__content">
-          <h1 class="hero-banner__title" id="hero-banner-title">
-            Специализированный сервис Volvo
-          </h1>
-          <p class="hero-banner__description">
-            Полный цикл обслуживания, сертифицированные специалисты и оригинальные запчасти для вашего Volvo — от регламентного ТО до сложных ремонтов.
-          </p>
-          <div class="hero-banner__actions">
-            <a
-              class="hero-banner__button hero-banner__button--primary"
-              href="#book-service"
-              role="button"
-              aria-label="Записаться на сервисное обслуживание Volvo"
+      <img
+        class="hero-banner__bg-image"
+        src="assets/img/hero-background.png"
+        alt=""
+        aria-hidden="true"
+      />
+      <div class="hero-banner__overlay"></div>
+      <header class="site-header" role="banner">
+        <div class="site-header__inner">
+          <a
+            class="site-header__logo"
+            href="/"
+            aria-label="VL Prime — перейти на главную"
+            tabindex="0"
+            role="link"
+            onkeydown="handleInteractiveEnter(event)"
+          >
+            <img
+              src="assets/img/logo-header.png"
+              width="65"
+              height="57"
+              loading="lazy"
+              alt="Логотип VL Prime"
+            />
+          </a>
+          <nav class="site-nav" id="mobile-nav" aria-label="Основная навигация">
+            <ul class="site-nav__list">
+              <li class="site-nav__item">
+                <a
+                  class="site-nav__link"
+                  href="#"
+                  aria-label="Раздел главная"
+                  tabindex="0"
+                  onkeydown="handleInteractiveEnter(event)"
+                >
+                  главная
+                </a>
+              </li>
+              <li class="site-nav__item">
+                <a
+                  class="site-nav__link"
+                  href="#about"
+                  aria-label="Раздел о нас"
+                  tabindex="0"
+                  onkeydown="handleInteractiveEnter(event)"
+                >
+                  О нас
+                </a>
+              </li>
+              <li class="site-nav__item">
+                <a
+                  class="site-nav__link"
+                  href="#services"
+                  aria-label="Раздел услуги"
+                  tabindex="0"
+                  onkeydown="handleInteractiveEnter(event)"
+                >
+                  Услуги
+                </a>
+              </li>
+              <li class="site-nav__item">
+                <a
+                  class="site-nav__link"
+                  href="#promo"
+                  aria-label="Раздел акции"
+                  tabindex="0"
+                  onkeydown="handleInteractiveEnter(event)"
+                >
+                  Акции
+                </a>
+              </li>
+              <li class="site-nav__item">
+                <a
+                  class="site-nav__link"
+                  href="#gallery"
+                  aria-label="Раздел галерея"
+                  tabindex="0"
+                  onkeydown="handleInteractiveEnter(event)"
+                >
+                  Галерея
+                </a>
+              </li>
+              <li class="site-nav__item">
+                <a
+                  class="site-nav__link"
+                  href="#blog"
+                  aria-label="Раздел блог"
+                  tabindex="0"
+                  onkeydown="handleInteractiveEnter(event)"
+                >
+                  блог
+                </a>
+              </li>
+              <li class="site-nav__item">
+                <a
+                  class="site-nav__link"
+                  href="#contacts"
+                  aria-label="Раздел контакты"
+                  tabindex="0"
+                  onkeydown="handleInteractiveEnter(event)"
+                >
+                  Контакты
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div class="site-header__actions">
+            <button
+              class="burger-button"
+              type="button"
+              aria-label="Открыть меню"
+              aria-controls="mobile-nav"
+              aria-expanded="false"
               tabindex="0"
               onkeydown="handleInteractiveEnter(event)"
             >
-              Book Service
+              <img
+                src="assets/icons/icon-menu.svg"
+                width="40"
+                height="40"
+                alt=""
+                aria-hidden="true"
+              />
+            </button>
+            <a
+              class="phone-button"
+              href="tel:+74951234567"
+              role="button"
+              aria-label="Позвонить в VL Prime"
+              tabindex="0"
+              onkeydown="handleInteractiveEnter(event)"
+            >
+              <img
+                src="assets/icons/icon-phone.svg"
+                width="40"
+                height="40"
+                alt=""
+                aria-hidden="true"
+              />
             </a>
           </div>
         </div>
+      </header>
+      <div class="hero-banner__inner">
+        <div class="hero-banner__content">
+          <p class="hero-banner__subtitle">VL Prime — ваш персональный автоэксперт!</p>
+          <h1 class="hero-banner__title" id="hero-banner-title">
+            Профессиональный сервис Volvo<br>
+            в Москве — опыт, доверие, гарантия.
+          </h1>
+          <p class="hero-banner__description">
+            Прозрачные цены, быстрая онлайн-запись и<br>
+            индивидуальный подход к каждому клиенту.
+          </p>
+          <p
+            class="hero-banner__stream"
+            role="note"
+            aria-label="Запишитесь на наш стрим по веб-дизайну"
+          >
+            Sign up for our cool web designer stream
+          </p>
+        </div>
+        <div class="hero-banner__actions">
+          <a
+            class="hero-banner__button hero-banner__button--primary"
+            href="#price-calculator"
+            role="button"
+            aria-label="Записаться на сервисное обслуживание Volvo"
+            tabindex="0"
+            onkeydown="handleInteractiveEnter(event)"
+          >
+            Записаться
+          </a>
+        </div>
       </div>
     </section>
-    <section class="booking" id="book-service" aria-labelledby="booking-title">
-      <div class="booking__inner">
-        <header class="booking__header">
-          <h2 class="booking__title" id="booking-title">Запись на ТО</h2>
-          <p class="booking__subtitle">Выберите удобные дату и время — покажем только свободные слоты</p>
-        </header>
-        <div class="booking__layout">
-          <div class="booking-calendar" aria-live="polite">
-            <div class="booking-calendar__top">
-              <button class="booking-calendar__nav booking-calendar__nav--prev" type="button" aria-label="Предыдущий месяц">
-                ‹
-              </button>
-              <div class="booking-calendar__label">
-                <span id="booking-month-label">Месяц Год</span>
-              </div>
-              <button class="booking-calendar__nav booking-calendar__nav--next" type="button" aria-label="Следующий месяц">
-                ›
-              </button>
+    <section class="advantages" id="advantages" aria-labelledby="advantages-title">
+      <div class="advantages__inner">
+        <h2 class="advantages__title" id="advantages-title">НАШИ ПРЕИМУЩЕСТВА</h2>
+        <ul class="advantages__list">
+          <li class="advantage-card">
+            <div class="advantage-card__icon">
+              <svg class="advantage-card__icon-svg" width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="10" y="15" width="50" height="45" rx="4" stroke="currentColor" stroke-width="2" fill="none"/>
+                <line x1="10" y1="25" x2="60" y2="25" stroke="currentColor" stroke-width="2"/>
+                <text x="35" y="45" font-size="24" font-weight="700" fill="#ff4f00">17</text>
+                <text x="48" y="45" font-size="18" font-weight="700" fill="#ff4f00">+</text>
+                <circle cx="65" cy="35" r="8" stroke="currentColor" stroke-width="2" fill="none"/>
+                <line x1="65" y1="30" x2="65" y2="40" stroke="currentColor" stroke-width="2"/>
+                <line x1="60" y1="35" x2="70" y2="35" stroke="currentColor" stroke-width="2"/>
+              </svg>
             </div>
-            <div class="booking-calendar__weekdays" aria-hidden="true">
-              <span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Вс</span>
+            <p class="advantage-card__text">ОПЫТ 17+ ЛЕТ</p>
+          </li>
+          <li class="advantage-card">
+            <div class="advantage-card__icon">
+              <svg class="advantage-card__icon-svg" width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="25" cy="40" r="15" stroke="currentColor" stroke-width="2" fill="none"/>
+                <circle cx="55" cy="40" r="15" stroke="currentColor" stroke-width="2" fill="none"/>
+                <circle cx="40" cy="40" r="8" stroke="#ff4f00" stroke-width="2" fill="none"/>
+                <path d="M 25 40 L 40 40 M 55 40 L 40 40" stroke="currentColor" stroke-width="2"/>
+              </svg>
             </div>
-            <div class="booking-calendar__grid" id="booking-grid" role="grid" aria-label="Календарь для выбора даты"></div>
-          </div>
-          <div class="booking-slots">
-            <h3 class="booking-slots__title">Доступное время</h3>
-            <div class="booking-slots__list" id="booking-slots" role="listbox" aria-label="Свободные временные слоты"></div>
-          </div>
-        </div>
-        <form class="booking__form" id="booking-form" novalidate>
-          <div class="booking__row">
-            <label class="booking__field">
-              <span class="booking__label">Выбранная дата</span>
-              <input class="booking__input" id="booking-date-input" type="text" readonly aria-readonly="true" />
-            </label>
-            <label class="booking__field">
-              <span class="booking__label">Время</span>
-              <input class="booking__input" id="booking-time-input" type="text" readonly aria-readonly="true" />
-            </label>
-          </div>
-          <div class="booking__row">
-            <label class="booking__field">
-              <span class="booking__label">Имя</span>
-              <input class="booking__input" id="booking-name" type="text" placeholder="Иван" required />
-            </label>
-            <label class="booking__field">
-              <span class="booking__label">Телефон</span>
-              <input class="booking__input" id="booking-phone" type="tel" inputmode="tel" placeholder="+7 (___) ___-__-__" required />
-            </label>
-          </div>
-          <button class="booking__submit" type="submit" aria-label="Отправить заявку на ТО">Записаться</button>
-          <p class="booking__notice" id="booking-notice" role="status" aria-live="polite"></p>
-        </form>
+            <p class="advantage-card__text">ОРИГИНАЛЬНЫЕ ЗАПЧАСТИ</p>
+          </li>
+          <li class="advantage-card">
+            <div class="advantage-card__icon">
+              <svg class="advantage-card__icon-svg" width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="40" cy="40" r="20" stroke="currentColor" stroke-width="2" fill="none"/>
+                <path d="M 30 40 L 35 45 L 50 30" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <text x="40" y="50" font-size="10" font-weight="700" text-anchor="middle" fill="currentColor">VOLVO</text>
+                <path d="M 40 20 Q 50 15 55 20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path d="M 50 18 L 48 15 M 52 18 L 54 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <p class="advantage-card__text">СЕРТИФИКАЦИЯ VOLVO</p>
+          </li>
+          <li class="advantage-card">
+            <div class="advantage-card__icon">
+              <svg class="advantage-card__icon-svg" width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="20" y="20" width="40" height="50" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
+                <line x1="20" y1="30" x2="60" y2="30" stroke="currentColor" stroke-width="2"/>
+                <line x1="20" y1="40" x2="60" y2="40" stroke="currentColor" stroke-width="2"/>
+                <rect x="25" y="48" width="30" height="12" rx="2" fill="#ff4f00" stroke="#ff4f00" stroke-width="1"/>
+                <text x="40" y="58" font-size="12" font-weight="700" text-anchor="middle" fill="#0c1420">6-12</text>
+                <path d="M 30 75 L 35 80 L 50 65" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <p class="advantage-card__text">ГАРАНТИЯ 6-12 МЕСЯЦЕВ</p>
+          </li>
+          <li class="advantage-card">
+            <div class="advantage-card__icon">
+              <svg class="advantage-card__icon-svg" width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="20" cy="50" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
+                <path d="M 15 50 Q 15 42 20 42 Q 25 42 25 50" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <rect x="48" y="38" width="22" height="18" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
+                <circle cx="58" cy="47" r="2.5" fill="currentColor"/>
+                <line x1="50" y1="54" x2="66" y2="54" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <line x1="28" y1="50" x2="48" y2="47" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="30" cy="48" r="2" fill="currentColor"/>
+                <circle cx="46" cy="47" r="2" fill="currentColor"/>
+              </svg>
+            </div>
+            <p class="advantage-card__text">ИНДИВИДУАЛЬНЫЙ ПОДХОД</p>
+          </li>
+        </ul>
       </div>
     </section>
     <section class="services" id="services">
@@ -244,8 +322,8 @@
     <section class="price-calculator" id="price-calculator" aria-labelledby="price-calculator-title">
       <div class="price-calculator__inner">
         <header class="price-calculator__header">
-          <h2 class="price-calculator__title" id="price-calculator-title">Калькулятор стоимости</h2>
-          <p class="price-calculator__subtitle">Выберите услуги — итог посчитается автоматически</p>
+          <h2 class="price-calculator__title" id="price-calculator-title">Калькулятор и запись на ТО</h2>
+          <p class="price-calculator__subtitle">Выберите услуги, дату и время — отправьте заявку в WhatsApp</p>
         </header>
         <form class="price-calculator__form" id="calc-form" novalidate>
           <fieldset class="price-calculator__group" aria-labelledby="calc-diagnostics">
@@ -253,21 +331,21 @@
             <ul class="price-calculator__list">
               <li class="price-item">
                 <label class="price-item__row">
-                  <input class="price-item__check" type="checkbox" data-title="Комплексная диагностика" data-price="3500" />
+                  <input class="price-item__check" type="checkbox" data-title="Комплексная диагностика" data-price="3500" data-time="90" />
                   <span class="price-item__title">Комплексная диагностика</span>
                   <span class="price-item__price" data-currency="RUB" data-value="3500">3 500 ₽</span>
                 </label>
               </li>
               <li class="price-item">
                 <label class="price-item__row">
-                  <input class="price-item__check" type="checkbox" data-title="Диагностика подвески" data-price="1800" />
+                  <input class="price-item__check" type="checkbox" data-title="Диагностика подвески" data-price="1800" data-time="60" />
                   <span class="price-item__title">Диагностика подвески</span>
                   <span class="price-item__price" data-currency="RUB" data-value="1800">1 800 ₽</span>
                 </label>
               </li>
               <li class="price-item">
                 <label class="price-item__row">
-                  <input class="price-item__check" type="checkbox" data-title="Компьютерная диагностика" data-price="2200" />
+                  <input class="price-item__check" type="checkbox" data-title="Компьютерная диагностика" data-price="2200" data-time="45" />
                   <span class="price-item__title">Компьютерная диагностика</span>
                   <span class="price-item__price" data-currency="RUB" data-value="2200">2 200 ₽</span>
                 </label>
@@ -279,7 +357,7 @@
             <ul class="price-calculator__list">
               <li class="price-item">
                 <label class="price-item__row">
-                  <input class="price-item__check" type="checkbox" data-title="Замена моторного масла" data-price="1400" />
+                  <input class="price-item__check" type="checkbox" data-title="Замена моторного масла" data-price="1400" data-time="30" />
                   <span class="price-item__title">Замена моторного масла</span>
                   <span class="price-item__price" data-currency="RUB" data-value="1400">1 400 ₽</span>
                 </label>
@@ -309,14 +387,14 @@
               </li>
               <li class="price-item">
                 <label class="price-item__row">
-                  <input class="price-item__check" type="checkbox" data-title="Замена салонного фильтра" data-price="900" />
+                  <input class="price-item__check" type="checkbox" data-title="Замена салонного фильтра" data-price="900" data-time="20" />
                   <span class="price-item__title">Замена салонного фильтра</span>
                   <span class="price-item__price" data-currency="RUB" data-value="900">900 ₽</span>
                 </label>
               </li>
               <li class="price-item">
                 <label class="price-item__row">
-                  <input class="price-item__check" type="checkbox" data-title="Промывка инжектора" data-price="2500" />
+                  <input class="price-item__check" type="checkbox" data-title="Промывка инжектора" data-price="2500" data-time="60" />
                   <span class="price-item__title">Промывка инжектора</span>
                   <span class="price-item__price" data-currency="RUB" data-value="2500">2 500 ₽</span>
                 </label>
@@ -328,7 +406,7 @@
             <ul class="price-calculator__list">
               <li class="price-item">
                 <label class="price-item__row">
-                  <input class="price-item__check" type="checkbox" data-title="Замена тормозных колодок (ось)" data-price="2000" />
+                  <input class="price-item__check" type="checkbox" data-title="Замена тормозных колодок (ось)" data-price="2000" data-time="45" />
                   <span class="price-item__title">Замена тормозных колодок (ось)</span>
                   <span class="price-item__price" data-currency="RUB" data-value="2000">2 000 ₽</span>
                 </label>
@@ -341,39 +419,81 @@
               </li>
               <li class="price-item">
                 <label class="price-item__row">
-                  <input class="price-item__check" type="checkbox" data-title="Замена свечей зажигания (комплект)" data-price="1800" />
+                  <input class="price-item__check" type="checkbox" data-title="Замена свечей зажигания (комплект)" data-price="1800" data-time="30" />
                   <span class="price-item__title">Замена свечей зажигания (комплект)</span>
                   <span class="price-item__price" data-currency="RUB" data-value="1800">1 800 ₽</span>
                 </label>
               </li>
               <li class="price-item">
                 <label class="price-item__row">
-                  <input class="price-item__check" type="checkbox" data-title="Замена ремня ГРМ" data-price="8500" />
+                  <input class="price-item__check" type="checkbox" data-title="Замена ремня ГРМ" data-price="8500" data-time="180" />
                   <span class="price-item__title">Замена ремня ГРМ</span>
                   <span class="price-item__price" data-currency="RUB" data-value="8500">8 500 ₽</span>
                 </label>
               </li>
             </ul>
           </fieldset>
+          <fieldset class="price-calculator__group price-calculator__group--booking" aria-labelledby="calc-booking">
+            <legend class="price-calculator__legend" id="calc-booking">Выбор даты и времени</legend>
+            <div class="price-calculator__booking-layout">
+              <div class="booking-calendar" aria-live="polite">
+                <div class="booking-calendar__top">
+                  <button class="booking-calendar__nav booking-calendar__nav--prev" type="button" aria-label="Предыдущий месяц">
+                    ‹
+                  </button>
+                  <div class="booking-calendar__label">
+                    <span id="booking-month-label">Месяц Год</span>
+                  </div>
+                  <button class="booking-calendar__nav booking-calendar__nav--next" type="button" aria-label="Следующий месяц">
+                    ›
+                  </button>
+                </div>
+                <div class="booking-calendar__weekdays" aria-hidden="true">
+                  <span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Вс</span>
+                </div>
+                <div class="booking-calendar__grid" id="booking-grid" role="grid" aria-label="Календарь для выбора даты"></div>
+              </div>
+              <div class="booking-slots">
+                <h3 class="booking-slots__title">Доступное время</h3>
+                <div class="booking-slots__list" id="booking-slots" role="listbox" aria-label="Свободные временные слоты"></div>
+              </div>
+            </div>
+            <div class="price-calculator__contact-fields">
+              <div class="price-calculator__field-row">
+                <label class="price-calculator__field">
+                  <span class="price-calculator__field-label">Выбранная дата</span>
+                  <input class="price-calculator__input" id="booking-date-input" type="text" readonly aria-readonly="true" />
+                </label>
+                <label class="price-calculator__field">
+                  <span class="price-calculator__field-label">Время</span>
+                  <input class="price-calculator__input" id="booking-time-input" type="text" readonly aria-readonly="true" />
+                </label>
+              </div>
+            </div>
+          </fieldset>
           <aside class="price-summary" aria-live="polite">
             <div class="price-summary__row">
-              <span class="price-summary__label">Выбрано:</span>
+              <span class="price-summary__label">Выбрано услуг:</span>
               <span class="price-summary__value" id="calc-count">0</span>
+            </div>
+            <div class="price-summary__row">
+              <span class="price-summary__label">Примерное время:</span>
+              <span class="price-summary__value" id="calc-time">0 мин</span>
             </div>
             <div class="price-summary__row price-summary__row--total">
               <span class="price-summary__label">Итого:</span>
               <span class="price-summary__total" id="calc-total" data-currency="RUB">0 ₽</span>
             </div>
-            <a
+            <button
               class="price-summary__cta"
-              href="#book-service"
-              role="button"
-              aria-label="Отправить заявку на выбранные услуги"
+              type="button"
+              id="calc-whatsapp-cta"
+              aria-label="Отправить заявку на выбранные услуги через WhatsApp"
               tabindex="0"
-              onkeydown="handleInteractiveEnter(event)"
             >
-              Оставить заявку
-            </a>
+              Записаться в WhatsApp
+            </button>
+            <p class="price-summary__notice" id="calc-notice" role="status" aria-live="polite"></p>
           </aside>
         </form>
       </div>
@@ -431,7 +551,7 @@
               <p class="service-card__meta">Completion time • 1 181 0H</p>
               <a
                 class="service-card__button"
-                href="#book-service"
+                href="#price-calculator"
                 role="button"
                 aria-label="Записаться на услугу с обозначенным временем выполнения"
                 tabindex="0"
@@ -477,7 +597,7 @@
                 </p>
                 <a
                   class="service-card__button"
-                  href="#book-service"
+                  href="#price-calculator"
                   role="button"
                   aria-label="Записаться на сервис для оценки времени выполнения"
                   tabindex="0"
